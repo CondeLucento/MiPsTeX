@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{MiPsTeX}
+
+\title{\textbf{MiPsTex: Example}} 
+\author{Conde Lucento}
+\date{2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+% ------------------------------
+% Lista de códigos (Cod Index)
+% ------------------------------
+\listofcodes
+\newpage
+
+% ------------------------------
+\section{Introducción}
+
+\mipstitle{Objetivo del paquete MiPsTeX}
+
+Este documento muestra todas las funcionalidades del paquete \texttt{MiPsTeX}:
+
+\begin{itemize}
+    \item Títulos y subtítulos estilo "pixel" (\verb|\mipstitle| y \verb|\submipstitle|)
+    \item Entorno de código MIPS con estilo y colores
+    \item Bloques de código opcionalmente titulados
+    \item Índice automático de códigos (Cod Index)
+\end{itemize}
+
+\submipstitle{Primer bloque de ejemplo}
+
+\begin{mips}[Inicialización de registros]
+.text
+main:
+    li $t0, 10      # Cargar valor 10 en t0
+    li $t1, 20      # Cargar valor 20 en t1
+\end{mips}
+
+% ------------------------------
+\section{Operaciones básicas}
+
+\mipstitle{Suma y Resta}
+
+\submipstitle{Suma de dos números}
+
+\begin{mips}[Suma de dos números]
+.text
+main:
+    li $t0, 5
+    li $t1, 7
+    add $t2, $t0, $t1    # t2 = t0 + t1
+    li $v0, 10
+    syscall
+\end{mips}
+
+\submipstitle{Resta de dos números}
+
+\begin{mips}[Resta de dos números]
+.text
+main:
+    li $t0, 15
+    li $t1, 4
+    sub $t2, $t0, $t1    # t2 = t0 - t1
+    li $v0, 10
+    syscall
+\end{mips}
+
+% ------------------------------
+\section{Acceso a memoria}
+
+\mipstitle{Uso de memoria en MIPS}
+
+\submipstitle{Cargar y almacenar palabras}
+
+\begin{mips}[Acceso a memoria]
+.data
+num: .word 42
+
+.text
+main:
+    la $t0, num        # Dirección de num en t0
+    lw $t1, 0($t0)     # Cargar valor de num en t1
+    li $v0, 10
+    syscall
+\end{mips}
+
+\submipstitle{Almacenar valor en memoria}
+
+\begin{mips}[Guardar en memoria]
+.data
+num: .word 0
+
+.text
+main:
+    li $t0, 99
+    la $t1, num
+    sw $t0, 0($t1)    # Guardar t0 en la dirección de num
+    li $v0, 10
+    syscall
+\end{mips}
+
+% ------------------------------
+\section{Bloques sin título}
+
+\mipstitle{Bloques de código opcionales}
+
+Este bloque de código no tiene título, por lo que **no aparecerá en el Cod Index**, pero mantiene los colores, fondo y numeración.
+
+\begin{mips}
+.text
+main:
+    li $a0, 100
+    li $v0, 1
+    syscall
+    li $v0, 10
+    syscall
+\end{mips}
+
+% ------------------------------
+\section{Resumen de funcionalidades}
+
+\submipstitle{Lista de características del paquete}
+
+\begin{itemize}
+    \item \textbf{Títulos grandes} con \verb|\mipstitle| y fondo negro
+    \item \textbf{Subtítulos} con \verb|\submipstitle|, más pequeños
+    \item \textbf{Entorno de código MIPS} con:
+    \begin{itemize}
+        \item Colores por tipo de instrucción
+        \item Comentarios en verde
+        \item Fondo gris
+        \item Numeración de líneas
+    \end{itemize}
+    \item \textbf{Bloques titulados} agregan automáticamente entradas en el Cod Index
+    \item \textbf{Bloques sin título} se formatean igual pero no aparecen en el índice
+\end{itemize}
+
+\end{document}

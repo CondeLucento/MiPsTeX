@@ -1,0 +1,137 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{MiPsTeX}[2026/02/27 Paquete para código MIPS]
+
+\RequirePackage{xcolor}
+\RequirePackage{listings}
+\usepackage[hidelinks]{hyperref}
+\RequirePackage{xparse}
+
+
+%%%%%%%%%%%% TÍTULO %%%%%%%%%%%%%%%
+\newcommand{\mipstitle}[1]{%
+  \vspace{1em}
+  \noindent
+  \colorbox{black}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep}{%
+      \ttfamily\bfseries\Large\color{white}\strut #1\strut
+    }%
+  }%
+  \vspace{0.5em}
+}
+
+%%%%%%%%%%%% SUBTÍTULO %%%%%%%%%%%%%%%
+\newcommand{\submipstitle}[1]{%
+  \vspace{0.7em}
+  \noindent
+  \colorbox{black}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep}{%
+      \ttfamily\bfseries\normalsize\color{white}\strut #1\strut
+    }%
+  }%
+  \vspace{0.4em}
+}
+
+
+%%%%%%%%%%%% COLORES %%%%%%%%%%%%%%%
+\definecolor{mipsInstruction}{RGB}{0,0,180}
+\definecolor{mipsComment}{RGB}{0,120,0}
+\definecolor{mipsRegister}{RGB}{180,0,0}
+\definecolor{mipsBackground}{RGB}{245,245,245}
+\definecolor{mipsPink}{RGB}{255, 0, 198}
+
+%%%%%%%%%%%% DEFINICIÓN LENGUAJE MIPS %%%%%%%%%%%%%%%
+\lstdefinelanguage{MIPS}{
+  morekeywords={
+    add,addi,addu,addiu,sub,subu,subi,subiu, mult,lw,sw,li,la,
+    beq,bne,j,jal,jr,syscall,multu,div,divu,and,andi,
+    or,ori,xor,xori,nor,lui,slt,sltu,slti,bgez,bgtz,
+    blez,bltz,mfhi,mfho,sll,sllv,srl,sra,srav,move,
+    bgt,bge,ble,blt,sgt,sge,seq,sle,sne,muli,slly,
+    srly,sray
+  },
+  morekeywords=[2]{
+    $zero,
+    $v0,$v1,
+    $a0,$a1,$a2,$a3,
+    $t0,$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,
+    $s0,$s1,$s2,$s3,$s4,$s5,$s6,$s7,
+    $sp,$ra
+  },
+  morekeywords=[3]{
+    .text, .equiv, .data, .word, .half, .byte,
+    .ascii, .space
+  },
+  keywordstyle=\color{mipsInstruction}\bfseries,
+  keywordstyle=[2]\color{mipsRegister},
+  keywordstyle=[3]\color{mipsPink},
+  morecomment=[l]{\#},
+  sensitive=true,
+  alsoletter={$},
+  alsoletter={.}
+}
+
+%%%%%%%%%%%% ESTILO %%%%%%%%%%%%%%%
+\lstdefinestyle{MiPsTeXStyle}{
+  language=MIPS,
+  backgroundcolor=\color{mipsBackground},
+  basicstyle=\ttfamily\small,
+  commentstyle=\color{mipsComment},
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false
+}
+
+%%%%%%%%%%%% CONTADOR Y CODE INDEX %%%%%%%%%%%%%%%
+\newcounter{mipscode}
+\renewcommand{\themipscode}{\arabic{mipscode}}
+
+\makeatletter
+\newcommand{\listofcodes}{%
+  \section*{Code Index}
+  \addcontentsline{toc}{section}{Code Index}
+  \@starttoc{cod}
+}
+
+\newcommand{\l@mipscode}{%
+  \@dottedtocline{1}{1.5em}{2.3em}
+}
+
+\newcommand{\addtocodindex}[1]{%
+  \refstepcounter{mipscode}%
+  \addcontentsline{cod}{mipscode}{\protect\numberline{\themipscode}#1}%
+}
+\makeatother
+
+%%%%%%%%%%%% ENTORNO MIPS %%%%%%%%%%%%%%%
+\lstnewenvironment{mips}
+{
+  \lstset{style=MiPsTeXStyle}
+}
+{}
+
+%%%%%%%%%%%% TÍTULO ENTORNO %%%%%%%%%%%%%%%
+\let\oldmips\mips
+\let\endoldmips\endmips
+
+\RenewDocumentEnvironment{mips}{o}
+{
+  \lstset{style=MiPsTeXStyle}
+  \IfValueT{#1}{
+    \addtocodindex{#1} %
+    \vspace{1em}
+    \noindent
+    \colorbox{black}{%
+      \parbox{\dimexpr\linewidth-2\fboxsep}{%
+        \ttfamily\bfseries\Large\color{white}\strut #1\strut
+      }%
+    }
+    \vspace{0.5em}
+  }
+  \oldmips
+}
+{
+  \endoldmips
+}
+
+\endinput

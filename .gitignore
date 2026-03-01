@@ -1,0 +1,45 @@
+# ==============================
+# LaTeX Compilation Files
+# ==============================
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.pdf
+*.bbl
+*.blg
+
+# ==============================
+# Temporary / Backup Files
+# ==============================
+*.swp
+*.bak
+*.tmp
+*~
+.#*
+
+# ==============================
+# Build / Output Folders
+# ==============================
+_build/
+build/
+output/
+
+# ==============================
+# OS-specific Files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Miscellaneous
+# ==============================
+# Add any extra temporary files from editors or tools here
