@@ -2,6 +2,10 @@
 
 *by Conde Lucento, 2026*
 
+<div align="center">
+  <img src="MiPsTeX_Logo.png" alt="" width="550">
+</div>
+
 ---
 
 # Español (ES)
