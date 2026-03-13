@@ -38,6 +38,7 @@
 \definecolor{mipsRegister}{RGB}{180,0,0}
 \definecolor{mipsBackground}{RGB}{245,245,245}
 \definecolor{mipsPink}{RGB}{255, 0, 198}
+\definecolor{mipsLavender}{RGB}{150, 123, 182}
 
 %%%%%%%%%%%% DEFINICIÓN LENGUAJE MIPS %%%%%%%%%%%%%%%
 \lstdefinelanguage{MIPS}{
@@ -68,6 +69,7 @@
   keywordstyle=[2]\color{mipsRegister},
   keywordstyle=[3]\color{mipsPink},
   morecomment=[l]{\#},
+  morestring=[b]",
   sensitive=true,
   alsoletter={$},
   alsoletter={.}
@@ -79,6 +81,7 @@
   backgroundcolor=\color{mipsBackground},
   basicstyle=\ttfamily\small,
   commentstyle=\color{mipsComment},
+  stringstyle=\color{mipsLavender},
   numbers=left,
   numberstyle=\tiny,
   breaklines=true,
