@@ -16,6 +16,8 @@
       \ttfamily\bfseries\Large\color{white}\strut #1\strut
     }%
   }%
+  % Añadir al TOC como sección sin número
+  \addcontentsline{toc}{section}{#1}% 
   \vspace{0.5em}
 }
 
@@ -28,6 +30,8 @@
       \ttfamily\bfseries\normalsize\color{white}\strut #1\strut
     }%
   }%
+  % Añadir al TOC como subsección sin número
+  \addcontentsline{toc}{subsection}{#1}%
   \vspace{0.4em}
 }
 
