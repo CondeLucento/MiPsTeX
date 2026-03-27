@@ -54,7 +54,12 @@
     or,ori,xor,xori,nor,lui,slt,sltu,slti,bgez,bgtz,
     blez,bltz,mfhi,mfho,sll,sllv,srl,sra,srav,move,
     bgt,bge,ble,blt,sgt,sge,seq,sle,sne,muli,slly,
-    srly,sray,lb,no,not,mflo,rd,rs,rt,beqz
+    srly,sray,lb,no,not,mflo,rd,rs,rt,beqz,add.s,
+    sub.s,add.d,sub.d,addi.s,mulo.s,div.s,mulo.d,
+    div.d,sqrt.s,neg.s,abs.s,sqrt.d,neg.d,abs.d,
+    mtc1,mfc1,mov.s,mov.d,cvt.s.w,cvt.s.d,cvt.d.w,
+    cvt.d.s,cvt.w.d,ceil.w.d,floor.w.d,trunc.w.d,
+    cvt.w.s,ceil.w.s,floor.w.s,trunc.w.s,mul.s
   },
   morekeywords=[2]{
     $zero,
@@ -65,7 +70,10 @@
     $sp,$ra, $0, $1 $2, $3, $4, $5, $6, $7, $8,
     $9, $10, $11, $12, $13, $14, $15, $16, $17, $18,
     $19, $20, $21, $22, $23, $24, $25, $26, $27, $28,
-    $29, $30, $31, $at
+    $29, $30, $31, $at, $f0, $f1 $f2, $f3, $f4, $f5, $f6, $f7, $f8,
+    $f9, $f10, $f11, $f12, $f13, $f14, $f15, $f16, $f17, $f18,
+    $f19, $f20, $f21, $f22, $f23, $f24, $f25, $f26, $f27, $f28,
+    $f29, $f30, $f31
   },
   morekeywords=[3]{
     .text, .equiv, .data, .word, .half, .byte,
